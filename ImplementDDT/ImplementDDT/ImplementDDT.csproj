@@ -63,7 +63,9 @@
   <ItemGroup>
     <Compile Include="Helpers\BasePage.cs" />
     <Compile Include="Helpers\ConfigReaderHelper.cs" />
+    <Compile Include="Helpers\DriverContext.cs" />
     <Compile Include="Helpers\ExcelHelpers.cs" />
+    <Compile Include="InitializeTestMethod.cs" />
     <Compile Include="Pages\LandingPage.cs" />
     <Compile Include="Pages\SignInGmail.cs" />
     <Compile Include="Pages\SignInPassword.cs" />

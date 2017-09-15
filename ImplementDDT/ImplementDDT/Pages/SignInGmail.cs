@@ -11,10 +11,6 @@ namespace ImplementDDT.Pages
 {
     class SignInGmail : BasePage
     {
-        public SignInGmail(IWebDriver driver) :
-            base(driver)
-        { }
-
 
         [FindsBy(How = How.Id, Using = "identifierId")]
         public IWebElement EnterEmailOrPhone { get; set; }

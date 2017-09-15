@@ -11,10 +11,6 @@ namespace ImplementDDT.Pages
 {
     class SignInPassword : BasePage
     {
-        public SignInPassword(IWebDriver driver) :
-            base(driver)
-        { }
-
 
         [FindsBy(How = How.Name, Using = "password")]
         public IWebElement txtEmailPhone { get; set; }

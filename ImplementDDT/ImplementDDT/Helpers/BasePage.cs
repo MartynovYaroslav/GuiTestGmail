@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using EAAutoFramework.Base;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,11 @@ namespace ImplementDDT.Helpers
 {
     public abstract class BasePage
     {
-        public BasePage(IWebDriver driver)
+        
+
+        public BasePage()
         {
-            PageFactory.InitElements(driver, this);
+            PageFactory.InitElements(DriverContext.Driver, this);
         }
 
     }

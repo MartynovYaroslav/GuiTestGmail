@@ -1,4 +1,5 @@
-﻿using ImplementDDT.Helpers;
+﻿using EAAutoFramework.Base;
+using ImplementDDT.Helpers;
 using ImplementDDT.Pages;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -25,53 +26,42 @@ namespace ImplementDDT
     public class UnitTest1
     {
 
-        private IWebDriver _driver;
-
-
         [SetUp]
         public void BeaforTest()
         {
 
-            _driver = new ChromeDriver();
+            DriverContext.Driver = new ChromeDriver();
             string url = ConfigReaderHelper.UrlInitializeTest();
 
-            _driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromMilliseconds(15000));
+            DriverContext.Driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromMilliseconds(15000));
 
-            _driver.Navigate().GoToUrl(url);
+            DriverContext.Driver.Navigate().GoToUrl(url);
 
             string currentWay = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
 
             string fileName = Path.Combine(currentWay, "Login.xlsx");
             ExcelHelpers.PopulateInCollection(fileName);
-
-
         }
-
 
 
         [TestCase(1), Repeat(4)]
         public void AuthorisationUser(int numm)
         {
+            ++numm;
 
+            new LandingPage().PressEnterLandingPage();
 
-            LandingPage landingPage = new LandingPage(_driver);
-            SignInGmail signInGmail = new SignInGmail(_driver);
-            SignInPassword signInPassword = new SignInPassword(_driver);
+            new SignInGmail().LoginTxt(numm);
 
-
-            landingPage.PressEnterLandingPage();
-
-            signInGmail.LoginTxt(numm);
-
-            signInPassword.PasswordTxt(numm);
+            new SignInPassword().PasswordTxt(numm);
 
         }
 
         [TearDown]
         public void AfterTest()
         {
-            _driver.Quit();
+            DriverContext.Driver.Quit();
         }
     }
 }
