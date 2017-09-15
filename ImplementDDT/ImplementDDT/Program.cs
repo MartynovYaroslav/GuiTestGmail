@@ -33,7 +33,7 @@ namespace ImplementDDT
         {
 
             _driver = new ChromeDriver();
-            string url = ConfigReaderHelper.InitializeTest();
+            string url = ConfigReaderHelper.UrlInitializeTest();
 
             _driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromMilliseconds(15000));
 
@@ -51,7 +51,7 @@ namespace ImplementDDT
 
 
         [TestCase(1), Repeat(4)]
-        public void AuthorisationByUser(int numm)
+        public void AuthorisationUser(int numm)
         {
 
 
