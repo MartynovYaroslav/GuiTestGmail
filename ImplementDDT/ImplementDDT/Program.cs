@@ -33,31 +33,24 @@ namespace ImplementDDT
         {
 
             _driver = new ChromeDriver();
-            string url = "https://www.google.com/intl/ru/gmail/about/";
-            _driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromMilliseconds(5000));
+            string url = ConfigReaderHelper.InitializeTest();
+
+            _driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromMilliseconds(15000));
+
             _driver.Navigate().GoToUrl(url);
 
-            //string fileName = Directory.GetCurrentDirectory();
-
-            string put = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)/*+String.Format("\\Login.xlsx")*/;
+            string currentWay = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
 
-            string fileName = Path.Combine(put, "Login.xlsx");
+            string fileName = Path.Combine(currentWay, "Login.xlsx");
             ExcelHelpers.PopulateInCollection(fileName);
-
-
-
-            //string path = Directory.GetCurrentDirectory();
-            //string fileName = String.Format("Login.xlsx");
-            //path = Path.Combine(path, fileName);
 
 
         }
 
 
 
-        [TestCase(1), Repeat(2)]
-        //[Retry(Times = 3, RequiredPassCount = 2)]
+        [TestCase(1), Repeat(4)]
         public void AuthorisationByUser(int numm)
         {
 

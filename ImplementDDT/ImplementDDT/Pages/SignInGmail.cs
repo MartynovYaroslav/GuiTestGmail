@@ -17,7 +17,7 @@ namespace ImplementDDT.Pages
 
 
         [FindsBy(How = How.Id, Using = "identifierId")]
-        public IWebElement txtEmailPhone { get; set; }
+        public IWebElement EnterEmailOrPhone { get; set; }
 
         [FindsBy(How = How.CssSelector, Using = "span.RveJvd")]
         public IWebElement btnNext { get; set; }
@@ -25,7 +25,7 @@ namespace ImplementDDT.Pages
 
         public void LoginTxt(int rowNamber)
         {
-            txtEmailPhone.SendKeys(ExcelHelpers.ReadData(rowNamber, "UserName"));
+            EnterEmailOrPhone.SendKeys(ExcelHelpers.ReadData(rowNamber, "UserName"));
             btnNext.Click();
         }
     }
