@@ -1,4 +1,5 @@
-﻿using ImplementDDT.Pages;
+﻿using ImplementDDT.Helpers;
+using ImplementDDT.Pages;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -38,15 +39,19 @@ namespace ImplementDDT
 
             //string fileName = Directory.GetCurrentDirectory();
 
-            string put = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string put = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)/*+String.Format("\\Login.xlsx")*/;
 
-            string path = Directory.GetCurrentDirectory();
-            DateTime dt = DateTime.Now;
-            string fileName = String.Format("log_{0}--{1}--{2}.txt");
-            path = Path.Combine(path, fileName);
 
-            //string fileName = Path.Combine("d:\\automation\\epam project\\Stability\\Data\\", "Login.xlsx");
-            //ExcelHelpers.PopulateInCollection(fileName);
+            string fileName = Path.Combine(put, "Login.xlsx");
+            ExcelHelpers.PopulateInCollection(fileName);
+
+
+
+            //string path = Directory.GetCurrentDirectory();
+            //string fileName = String.Format("Login.xlsx");
+            //path = Path.Combine(path, fileName);
+
+
         }
 
 
