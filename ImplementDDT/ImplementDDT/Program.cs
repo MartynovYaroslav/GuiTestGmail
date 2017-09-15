@@ -45,10 +45,10 @@ namespace ImplementDDT
         }
 
 
-        [TestCase(1), Repeat(4)]
+        [TestCase(0), Repeat(4)]
         public void AuthorisationUser(int numm)
         {
-            ++numm;
+            numm++;
 
             new LandingPage().PressEnterLandingPage();
 
