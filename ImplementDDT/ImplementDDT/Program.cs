@@ -23,26 +23,26 @@ namespace ImplementDDT
 
 
     [TestFixture]
-    public class UnitTest1
+    public class UnitTest1 : InitializeTestMethod
     {
 
-        [SetUp]
-        public void BeaforTest()
-        {
+        //[SetUp]
+        //public void BeaforTest()
+        //{
 
-            DriverContext.Driver = new ChromeDriver();
-            string url = ConfigReaderHelper.UrlInitializeTest();
+        //    DriverContext.Driver = new ChromeDriver();
+        //    string url = ConfigReaderHelper.UrlInitializeTest();
 
-            DriverContext.Driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromMilliseconds(15000));
+        //    DriverContext.Driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromMilliseconds(15000));
 
-            DriverContext.Driver.Navigate().GoToUrl(url);
+        //    DriverContext.Driver.Navigate().GoToUrl(url);
 
-            string currentWay = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        //    string currentWay = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
 
-            string fileName = Path.Combine(currentWay, "Login.xlsx");
-            ExcelHelpers.PopulateInCollection(fileName);
-        }
+        //    string fileName = Path.Combine(currentWay, "Login.xlsx");
+        //    ExcelHelpers.PopulateInCollection(fileName);
+        //}
 
 
         [TestCase(0), Repeat(4)]
@@ -58,11 +58,11 @@ namespace ImplementDDT
 
         }
 
-        [TearDown]
-        public void AfterTest()
-        {
-            DriverContext.Driver.Quit();
-        }
+        //[TearDown]
+        //public void AfterTest()
+        //{
+        //    DriverContext.Driver.Quit();
+        //}
     }
 }
 

@@ -13,15 +13,10 @@ namespace ImplementDDT.Helpers
     {
         private static List<Datacollection> _dataCol = new List<Datacollection>();
 
-        /// <summary>
-        /// Story all the excel values in to the memory collections
-        /// </summary>
-        /// <param name="fileName"></param>
         public static void PopulateInCollection(string fileName)
         {
             DataTable table = ExcelToDataTable(fileName);
 
-            //Iterate through the rows and columns of the Table
             for (int row = 1; row <= table.Rows.Count; row++)
             {
                 for (int col = 0; col < table.Columns.Count; col++)
@@ -32,33 +27,28 @@ namespace ImplementDDT.Helpers
                         colName = table.Columns[col].ColumnName,
                         colValue = table.Rows[row - 1][col].ToString()
                     };
-                    //Add all the details for each row
+
                     _dataCol.Add(dtTable);
                 }
             }
         }
 
-        /// <summary>
-        /// Reading all the datas from Excelsheet
-        /// </summary>
-        /// <param name="fileName"></param>
-        /// <returns></returns>
+
         private static DataTable ExcelToDataTable(string fileName)
         {
-            //open file and returns as Stream
             FileStream stream = File.Open(fileName, FileMode.Open, FileAccess.Read);
-            //Createopenxmlreader via ExcelReaderFactory
-            IExcelDataReader excelReader = ExcelReaderFactory.CreateOpenXmlReader(stream);//.xlsk
-            //Set the First Row as Column Name
-            excelReader.IsFirstRowAsColumnNames = true;
-            //Return as DataSet
-            DataSet result = excelReader.AsDataSet();
-            //Get all the Tables
-            DataTableCollection table = result.Tables;
-            //Store it in DataTable
-            DataTable resultTable = table["Лист1"];
 
-            //return
+            IExcelDataReader excelReader = ExcelReaderFactory.CreateOpenXmlReader(stream);
+
+            excelReader.IsFirstRowAsColumnNames = true;
+
+            DataSet result = excelReader.AsDataSet();
+
+            DataTableCollection table = result.Tables;
+
+            DataTable resultTable = table["Sheet1"];
+
+
             return resultTable;
         }
 
@@ -67,11 +57,10 @@ namespace ImplementDDT.Helpers
         {
             try
             {
-                //Retriving Data using LINQ to reduce much of iterations
                 string data = (from colData in _dataCol
                                where colData.colName == columnName && colData.rowNumber == rowNumber
                                select colData.colValue).SingleOrDefault();
-                //var datas = dataCol.Where(x => x.colName == columnName && x.rowName == rowNumber).SingleOrDefault();
+
                 return data.ToString();
             }
             catch (Exception e)
