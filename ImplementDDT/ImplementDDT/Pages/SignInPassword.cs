@@ -1,11 +1,6 @@
 ﻿using ImplementDDT.Helpers;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ImplementDDT.Pages
 {
@@ -19,9 +14,9 @@ namespace ImplementDDT.Pages
         public IWebElement btnNext { get; set; }
 
 
-        public void PasswordTxt(int rowNumber)
+        public void PassPassword(int rowRead)
         {
-            txtEmailPhone.SendKeys(ExcelHelpers.ReadData(rowNumber, "Password"));
+            txtEmailPhone.SendKeys(ExcelHelpers.ReadData(rowRead, "Password"));
             btnNext.Click();
         }
     }

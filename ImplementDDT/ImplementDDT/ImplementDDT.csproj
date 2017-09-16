@@ -65,11 +65,11 @@
     <Compile Include="Helpers\ConfigReaderHelper.cs" />
     <Compile Include="Helpers\DriverContext.cs" />
     <Compile Include="Helpers\ExcelHelpers.cs" />
-    <Compile Include="InitializeTestMethod.cs" />
+    <Compile Include="InitializeTest.cs" />
     <Compile Include="Pages\LandingPage.cs" />
     <Compile Include="Pages\SignInGmail.cs" />
     <Compile Include="Pages\SignInPassword.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="TestClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

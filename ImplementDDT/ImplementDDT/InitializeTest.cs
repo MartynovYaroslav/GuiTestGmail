@@ -3,17 +3,12 @@ using ImplementDDT.Helpers;
 using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ImplementDDT
 {
-   // [TestFixture]
-    public class InitializeTestMethod
+    public class InitializeTest
     {
         [SetUp]
         public void BeaforTest()
